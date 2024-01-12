@@ -1,0 +1,24 @@
+*,html,body{
+box-sizing: border-box;
+}
+
+.app{
+    height: 500px;
+    width: 500px;
+    border: 5px solid rgb(17, 10, 36);
+    padding: 8px;
+}
+.addInputDiv {
+    position: relative;
+    width: 100%;
+}
+.inputBar{
+    width: 100%;
+    padding: 16px;
+}
+.inputButton{
+    position: absolute;
+    right: 0;
+    padding: 16px 32px;
+    background-color: #30c69f;
+}
