@@ -11,6 +11,7 @@ box-sizing: border-box;
     width: 500px;
     border: 5px solid rgb(17, 10, 36);
     padding: 8px;
+    position: relative;
 }
 .addInputDiv {
     position: relative;
@@ -27,8 +28,19 @@ box-sizing: border-box;
     padding: 16px 32px;
     background-color: #30c69f;
 }
+
+.todoList{
+    overflow: auto;
+    height: 320px;
+}
 .todoItem{
     background-color: #30c69f;
+    margin-bottom: 14px;
+    padding: 8px;
+    position: relative;
+}
+.completeditem{
+    background-color: #75520d;
     margin-bottom: 14px;
     padding: 8px;
     position: relative;
@@ -46,3 +58,20 @@ box-sizing: border-box;
     font-size: 22px;
     color: red;
 }
+.tab{
+    width: 100%;
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+}
+
+.all,.completed,.pending{
+    width: 33%;
+    padding: 12px;
+}
+.activeTab{
+    background-color: #30c69f;
+    width: 33%;
+    padding: 12px;
+}
+

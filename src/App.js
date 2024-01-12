@@ -4,7 +4,7 @@ import TodoList from "./todoList";
 export default function App() {
   const [todoList, setTodoList] = useState([]);
   const [input, setInput] = useState("");
-  // const[updatedList,setUpdatedList]=useState([]);
+  const[tab,setTab]=useState("All");
 
   function changeInputHandler(e) {
     setInput(e.target.value);
@@ -45,6 +45,17 @@ export default function App() {
     setTodoList([...updateList]);
   }
 
+  const updatedList = todoList.filter((item) => {
+    if (tab === "all") return true;
+    else if (tab === "pending") {
+      return !item.complete;
+    } else if (tab === "completed") {
+      return item.complete;
+    }
+    return true;
+  });
+// setTodoList([...updatedList]);
+
   return (
     <div className="app">
       <div className="addInputDiv">
@@ -64,8 +75,15 @@ export default function App() {
         </button>
       </div>
      
-        <TodoList todoList={todoList} clickupdateListHandler={clickupdateListHandler} updateDeletetodo={updateDeletetodo}/>
+        <TodoList todoList={updatedList} clickupdateListHandler={clickupdateListHandler} updateDeletetodo={updateDeletetodo}/>
       
+        <div className="tab">
+          <button className={`${tab==='all'?"activeTab":"all"}`}  onClick={()=>setTab("all")}>All</button>
+          <button className={`${tab==='pending'?"activeTab":"pending"}`}  onClick={()=>setTab("pending")}>Pending</button>
+          <button className={`${tab==='completed'?"activeTab":"completed"}`}  onClick={()=>setTab("completed")}>Completed</button>
+
+        </div>
     </div>
+
   );
 }

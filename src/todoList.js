@@ -3,7 +3,7 @@ export default function ToDoList(props) {
    <div className="todoList">
      {props.todoList.map((item,i) => {
        return (
-         <div className="todoItem" key={i}>
+         <div className={`${item.complete?"completeditem":"todoItem"}`} key={i}>
            {item.text}
            <span className="fa fa-close" onClick={()=>props.updateDeletetodo(item)}></span>
            <span className={`${item.complete?"fa fa-circle":"fa fa-circle-o"}`} onClick={()=>props.clickupdateListHandler(item)}></span>
