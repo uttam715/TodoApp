@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./style.css";
+export default function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [input, setInput] = useState("");
 
-function App() {
+  function changeInputHandler(e) {
+    setInput(e.target.value);
+  }
+  function clickButtonHandler(e) {
+    //descriptive way
+    // const clonedTodo = [...todoList];
+    // const newTodo = {
+    //   text: input,
+    //   complete: false
+    // }
+
+    // clonedTodo.push(newTodo)
+
+    setTodoList([...todoList, { text: input, complete: false }]);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="app">
+      <div className="addInputDiv">
+        <input
+          type="text"
+          className="inputBar"
+          placeholder="Add Activity"
+          value={input}
+          onChange={changeInputHandler}
+        ></input>
+        <button
+          type="submit"
+          className="inputButton"
+          onClick={clickButtonHandler}
         >
-          Learn React
-        </a>
-      </header>
+          Add To Do
+        </button>
+      </div>
     </div>
   );
 }
-
-export default App;
