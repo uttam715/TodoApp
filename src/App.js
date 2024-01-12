@@ -25,34 +25,25 @@ export default function App() {
   }
 
   function clickupdateListHandler(item) {
-    const updatedtodoList=todoList.map((arrayItem)=>{
-      // return(arrayItem);
-      const rawitem={text:arrayItem.text,complete:arrayItem.complete};
-      console.log(rawitem);
-      if(item.text===rawitem.text&&item.complete===false)
-      {
-        rawitem.complete=true;
+    const updatedtodoList = todoList.map((arrayItem) => {
+      if (item.text === arrayItem.text && item.complete === false) {
+        arrayItem.complete = true;
+      } else if (item.text === arrayItem.text && item.complete === true) {
+        arrayItem.complete = false;
       }
-      else if(item.text===rawitem.text&&item.complete===true)
-      {
-        rawitem.complete=false;
-      }
-      return rawitem;
-
-  });
+      return arrayItem;
+    });
     setTodoList([...updatedtodoList]);
   }
-  //   const updatedtodoList=todoList.map((arrayItem)=>{
-  //     if(item.complete===true)
-  //     {
-  //       return(arrayItem.complete=false);
-  //     }
-  //     else if(item.complete===false)
-  //     return(arrayItem.complete=true);
-  //   });
-  //   setTodoList([...updatedtodoList]);
 
-  // }
+  function updateDeletetodo(item) {
+    const updateList = todoList.filter((arrayItem) => {
+      if (arrayItem.text!== item.text) return true
+     // else return true
+     return false;
+    });
+    setTodoList([...updateList]);
+  }
 
   return (
     <div className="app">
@@ -73,7 +64,7 @@ export default function App() {
         </button>
       </div>
      
-        <TodoList todoList={todoList} clickupdateListHandler={clickupdateListHandler}/>
+        <TodoList todoList={todoList} clickupdateListHandler={clickupdateListHandler} updateDeletetodo={updateDeletetodo}/>
       
     </div>
   );
