@@ -19,16 +19,18 @@ export default function App() {
     // }
 
     // clonedTodo.push(newTodo)
+    if(!input.trim()) return;
 
-    setTodoList([...todoList, { text: input, complete: false }]);
+    const id = Math.floor(Math.random() * Date.now());
+    setTodoList([...todoList, { text: input, complete: false, id }]);
     setInput("");
   }
 
   function clickupdateListHandler(item) {
     const updatedtodoList = todoList.map((arrayItem) => {
-      if (item.text === arrayItem.text && item.complete === false) {
+      if (item.id === arrayItem.id && item.complete === false) {
         arrayItem.complete = true;
-      } else if (item.text === arrayItem.text && item.complete === true) {
+      } else if (item.id === arrayItem.id && item.complete === true) {
         arrayItem.complete = false;
       }
       return arrayItem;
@@ -38,7 +40,7 @@ export default function App() {
 
   function updateDeletetodo(item) {
     const updateList = todoList.filter((arrayItem) => {
-      if (arrayItem.text!== item.text) return true
+      if (arrayItem.id!== item.id) return true
      // else return true
      return false;
     });
